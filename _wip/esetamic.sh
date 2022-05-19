@@ -56,7 +56,15 @@ ask(){
 }
 
 checkdomain(){
-    # TODO: Change this for running on our real vps
+    # TODO: Change all these this for running on our real vps
+    if [ ! -d "./test/domains/$DOMAIN" ] 
+    then
+        fatal "Domain $DOMAIN DOES NOT exists on this server." 
+    fi
+    if [ -d "./test/domains/$DOMAIN/app" ] 
+    then
+        fatal "There is already an app living in $DOMAIN" 
+    fi
     if [ ! -d "./test/domains/$DOMAIN" ] 
     then
         fatal "Domain $DOMAIN DOES NOT exists on this server." 
